@@ -1,0 +1,15 @@
+.container {
+  height: 65vh;
+  max-width: 80vw;
+  overflow: scroll;
+}
+
+.search-icon {
+  position: relative;
+  top: 8px;
+  left: -2px;
+}
+
+.search-field {
+  margin-top: -15px;
+}

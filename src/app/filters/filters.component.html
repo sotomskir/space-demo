@@ -1,0 +1,17 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <mat-form-field class="search-field w100" floatLabel="never">
+    <mat-icon class="search-icon" matPrefix>search</mat-icon>
+    <input matInput type="text" placeholder="Filter by launch location name" formControlName="search"/>
+  </mat-form-field><div formArrayName="locations" class="container">
+    <ng-container *ngFor="let control of filteredLocations; index as i" [formGroupName]="i">
+      <div>
+        <mat-checkbox [formControl]="control.get('checked')">{{control?.value?.location?.name | shorten:30}}</mat-checkbox>
+      </div>
+    </ng-container>
+  </div>
+  <div class="flex mt2">
+    <button type="button" mat-button (click)="reset()">Reset</button>
+    <div class="flex-auto"></div>
+    <button type="submit" mat-raised-button color="accent">Save</button>
+  </div>
+</form>

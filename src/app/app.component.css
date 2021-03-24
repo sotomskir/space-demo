@@ -1,0 +1,16 @@
+.sidenav-container {
+  height: calc(100vh - 64px);
+}
+
+.popover {
+  background-color: #fafafa;
+  border: 1px solid #b1b1b1;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.label {
+  color: #898989;
+  font-size: 0.8em;
+  margin-top: 10px;
+}

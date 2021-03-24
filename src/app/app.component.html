@@ -1,0 +1,36 @@
+<mat-toolbar color="primary">
+  <button (click)="isOpen = true" type="button" mat-raised-button
+          cdkOverlayOrigin #trigger="cdkOverlayOrigin">
+    Launch locations
+  </button>
+  <ng-template cdkConnectedOverlay
+               [cdkConnectedOverlayOrigin]="trigger"
+               [cdkConnectedOverlayOpen]="isOpen">
+    <div class="popover mat-elevation-z1">
+      <app-filters [locations]="locations" (onsubmit)="isOpen = false"></app-filters>
+    </div>
+  </ng-template>
+</mat-toolbar>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav-content infiniteScroll
+                       [immediateCheck]="true"
+                       [scrollWindow]="false"
+                       (scrolled)="onScroll()">
+    <div class="p2" role="main">
+      <div *ngIf="!launchList?.length">no results</div>
+      <mat-card class="mb2" *ngFor="let launch of launchList">
+        <div class="label">Start:</div>
+        <div>{{launch.window_start | date:'medium'}}</div>
+
+        <div class="label">Mission name:</div>
+        <div>{{launch.name}}</div>
+
+        <div class="label">Pad name:</div>
+        <div>{{launch.pad?.name}}</div>
+
+        <div class="label">Location:</div>
+        <div>{{launch.pad?.location?.name}}</div>
+      </mat-card>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
